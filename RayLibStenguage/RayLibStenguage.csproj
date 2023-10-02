@@ -4,7 +4,7 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <Reference Include="Stenguage">
-      <HintPath>..\..\Stenguage\Stenguage\bin\Debug\net6.0\Stenguage.dll</HintPath>
+      <HintPath>..\..\Stenguage\Stenguage\bin\Release\Stenguage.dll</HintPath>
     </Reference>
   </ItemGroup>
 
