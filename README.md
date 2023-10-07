@@ -39,9 +39,9 @@ InitWindow(800, 480, "Hello World")
 while (!WindowShouldClose())
 {
     BeginDrawing()
-    ClearBackground([255, 255, 255, 255])
+    ClearBackground(Color(255, 255, 255))
 
-    DrawText("Hello, world!", 12, 12, 20, [0, 0, 0, 255])
+    DrawText("Hello, world!", 12, 12, 20, Color(0, 0, 0))
 
     EndDrawing()
 }
