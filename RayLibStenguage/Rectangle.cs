@@ -1,5 +1,4 @@
-﻿using Stenguage;
-using Stenguage.Runtime.Values;
+﻿using Stenguage.Runtime.Values;
 
 namespace RayLibStenguage
 {
@@ -10,7 +9,7 @@ namespace RayLibStenguage
         public NumberValue Width { get; set; }
         public NumberValue Height { get; set; }
 
-        public Rectangle(string sourceCode, NumberValue x, NumberValue y, NumberValue width, NumberValue height) : base(sourceCode)
+        public Rectangle(NumberValue x, NumberValue y, NumberValue width, NumberValue height)
         {
             X = x;
             Y = x;

@@ -7,11 +7,5 @@ namespace RayLibStenguage
     public class Image : ObjectValue
     {
         public Raylib_cs.Image Source { get; set; }
-
-        public unsafe Image(string sourceCode) : base(sourceCode)
-        {
-            
-        }
-
     }
 }

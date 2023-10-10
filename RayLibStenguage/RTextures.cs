@@ -11,7 +11,7 @@ namespace RayLibStenguage
             StringValue fileName)
         {
             Raylib_cs.Image image = Raylib.LoadImage(fileName.Value);
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = image });
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult LoadImageRaw(Stenguage.Runtime.Environment scope, Position start, Position end,
             StringValue fileName, NumberValue width, NumberValue height, NumberValue format, NumberValue headerSize)
@@ -23,7 +23,7 @@ namespace RayLibStenguage
                 (PixelFormat)format.Value,
                 (int)headerSize.Value
             );
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = image });
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         // Image LoadImageAnim(string fileName, int *frames);
         // Image LoadImageFromMemory(string fileType, constunsignedchar* fileData, int dataSize);
@@ -31,18 +31,18 @@ namespace RayLibStenguage
         public static RuntimeResult LoadImageFromScreen(Stenguage.Runtime.Environment scope, Position start, Position end)
         {
             Raylib_cs.Image image = Raylib.LoadImageFromScreen();
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = image });
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult IsImageReady(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsImageReady(image.Source), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsImageReady(image.Source)));
         }
         public static RuntimeResult UnloadImage(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image)
         {
             Raylib.UnloadImage(image.Source);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
         public static RuntimeResult ExportImage(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image, StringValue fileName)
@@ -50,7 +50,7 @@ namespace RayLibStenguage
             return new RuntimeResult().Success(new BooleanValue(Raylib.ExportImage(
                 image.Source,
                 fileName.Value
-            ), scope.SourceCode));
+            )));
         }
         public static RuntimeResult ExportImageAsCode(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image, StringValue fileName)
@@ -58,7 +58,7 @@ namespace RayLibStenguage
             return new RuntimeResult().Success(new BooleanValue(Raylib.ExportImageAsCode(
                 image.Source,
                 fileName.Value
-            ), scope.SourceCode));
+            )));
         }
         public static RuntimeResult GenImageColor(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, Color color)
@@ -73,7 +73,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = image });
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult GenImageGradientRadial(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, NumberValue density, Color inner, Color outer)
@@ -95,7 +95,7 @@ namespace RayLibStenguage
                     (byte)outer.A.Value
                 )
             );
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = image });
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult GenImageChecked(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, NumberValue checksX, NumberValue checksY, Color col1, Color col2)
@@ -118,7 +118,7 @@ namespace RayLibStenguage
                     (byte)col2.A.Value
                 )
             );
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = image });
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult GenImageWhiteNoise(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, NumberValue factor)
@@ -128,7 +128,7 @@ namespace RayLibStenguage
                 (int)height.Value,
                 (float)factor.Value
             );
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = image });
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult GenImagePerlinNoise(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, NumberValue offsetX, NumberValue offsetY, NumberValue scale)
@@ -140,7 +140,7 @@ namespace RayLibStenguage
                 (int)offsetY.Value,
                 (float)scale.Value
             );
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = image });
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult GenImageCellular(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, NumberValue tileSize)
@@ -150,7 +150,7 @@ namespace RayLibStenguage
                 (int)height.Value,
                 (int)tileSize.Value
             );
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = image });
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public unsafe static RuntimeResult GenImageText(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, NumberValue tileSize)
@@ -160,13 +160,13 @@ namespace RayLibStenguage
                 (int)height.Value,
                 (int)tileSize.Value
             );
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = image });
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult ImageCopy(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image)
         {
             Raylib_cs.Image img = Raylib.ImageCopy(image.Source);
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = img });
+            return new RuntimeResult().Success(new Image { Source = img });
         }
         public static RuntimeResult ImageFromImage(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image, Rectangle rec)
@@ -180,7 +180,7 @@ namespace RayLibStenguage
                     (float)rec.Height.Value
                 )
             );
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = img });
+            return new RuntimeResult().Success(new Image { Source = img });
         }
         public static RuntimeResult ImageText(Stenguage.Runtime.Environment scope, Position start, Position end,
             StringValue text, NumberValue fontSize, Color color)
@@ -195,7 +195,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return new RuntimeResult().Success(new Image(scope.SourceCode) { Source = image });
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         // Image ImageTextEx(Font font, string text, float fontSize, float spacing, Color tint);
         // void ImageFormat(Image *image, int newFormat);
@@ -233,11 +233,11 @@ namespace RayLibStenguage
                 image.Source,
                 (float)threshold.Value
             );
-            return new RuntimeResult().Success(new Rectangle(scope.SourceCode,
-                new NumberValue(r.x, scope.SourceCode),
-                new NumberValue(r.y, scope.SourceCode),
-                new NumberValue(r.width, scope.SourceCode),
-                new NumberValue(r.height, scope.SourceCode)
+            return new RuntimeResult().Success(new Rectangle(
+                new NumberValue(r.x),
+                new NumberValue(r.y),
+                new NumberValue(r.width),
+                new NumberValue(r.height)
             ));
         }
         public static RuntimeResult GetImageColor(Stenguage.Runtime.Environment scope, Position start, Position end,
@@ -248,11 +248,11 @@ namespace RayLibStenguage
                 (int)x.Value,
                 (int)y.Value
             );
-            return new RuntimeResult().Success(new Color(scope.SourceCode,
-                new NumberValue(c.r, scope.SourceCode),
-                new NumberValue(c.g, scope.SourceCode),
-                new NumberValue(c.b, scope.SourceCode),
-                new NumberValue(c.a, scope.SourceCode)
+            return new RuntimeResult().Success(new Color(
+                new NumberValue(c.r),
+                new NumberValue(c.g),
+                new NumberValue(c.b),
+                new NumberValue(c.a)
             ));
         }
         // void ImageClearBackground(Image *dst, Color color);
@@ -302,11 +302,11 @@ namespace RayLibStenguage
                 ),
                 (float)alpha.Value
             );
-            return new RuntimeResult().Success(new Color(scope.SourceCode,
-                new NumberValue(c.r, scope.SourceCode),
-                new NumberValue(c.g, scope.SourceCode),
-                new NumberValue(c.b, scope.SourceCode),
-                new NumberValue(c.a, scope.SourceCode)
+            return new RuntimeResult().Success(new Color(
+                new NumberValue(c.r),
+                new NumberValue(c.g),
+                new NumberValue(c.b),
+                new NumberValue(c.a)
             ));
         }
         public static RuntimeResult ColorToInt(Stenguage.Runtime.Environment scope, Position start, Position end,
@@ -320,8 +320,8 @@ namespace RayLibStenguage
                         (byte)color.B.Value,
                         (byte)color.A.Value
                     )
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
         // Vector4 ColorNormalize(Color color);
         // Color ColorFromNormalized(Vector4 normalized);
@@ -334,11 +334,11 @@ namespace RayLibStenguage
                 (float)saturation.Value,
                 (float)value.Value
             );
-            return new RuntimeResult().Success(new Color(scope.SourceCode,
-                new NumberValue(c.r, scope.SourceCode),
-                new NumberValue(c.g, scope.SourceCode),
-                new NumberValue(c.b, scope.SourceCode),
-                new NumberValue(c.a, scope.SourceCode)
+            return new RuntimeResult().Success(new Color(
+                new NumberValue(c.r),
+                new NumberValue(c.g),
+                new NumberValue(c.b),
+                new NumberValue(c.a)
             ));
         }
         public static RuntimeResult ColorTint(Stenguage.Runtime.Environment scope, Position start, Position end,
@@ -358,11 +358,11 @@ namespace RayLibStenguage
                     (byte)tint.A.Value
                 )
             );
-            return new RuntimeResult().Success(new Color(scope.SourceCode,
-                new NumberValue(c.r, scope.SourceCode),
-                new NumberValue(c.g, scope.SourceCode),
-                new NumberValue(c.b, scope.SourceCode),
-                new NumberValue(c.a, scope.SourceCode)
+            return new RuntimeResult().Success(new Color(
+                new NumberValue(c.r),
+                new NumberValue(c.g),
+                new NumberValue(c.b),
+                new NumberValue(c.a)
             ));
         }
         public static RuntimeResult ColorBrightness(Stenguage.Runtime.Environment scope, Position start, Position end,
@@ -377,11 +377,11 @@ namespace RayLibStenguage
                 ),
                 (float)factor.Value
             );
-            return new RuntimeResult().Success(new Color(scope.SourceCode,
-                new NumberValue(c.r, scope.SourceCode),
-                new NumberValue(c.g, scope.SourceCode),
-                new NumberValue(c.b, scope.SourceCode),
-                new NumberValue(c.a, scope.SourceCode)
+            return new RuntimeResult().Success(new Color(
+                new NumberValue(c.r),
+                new NumberValue(c.g),
+                new NumberValue(c.b),
+                new NumberValue(c.a)
             ));
         }
         public static RuntimeResult ColorContrast(Stenguage.Runtime.Environment scope, Position start, Position end,
@@ -396,11 +396,11 @@ namespace RayLibStenguage
                 ),
                 (float)contrast.Value
             );
-            return new RuntimeResult().Success(new Color(scope.SourceCode,
-                new NumberValue(c.r, scope.SourceCode),
-                new NumberValue(c.g, scope.SourceCode),
-                new NumberValue(c.b, scope.SourceCode),
-                new NumberValue(c.a, scope.SourceCode)
+            return new RuntimeResult().Success(new Color(
+                new NumberValue(c.r),
+                new NumberValue(c.g),
+                new NumberValue(c.b),
+                new NumberValue(c.a)
             ));
         }
         public static RuntimeResult ColorAlpha(Stenguage.Runtime.Environment scope, Position start, Position end,
@@ -415,11 +415,11 @@ namespace RayLibStenguage
                 ),
                 (float)alpha.Value
             );
-            return new RuntimeResult().Success(new Color(scope.SourceCode,
-                new NumberValue(c.r, scope.SourceCode),
-                new NumberValue(c.g, scope.SourceCode),
-                new NumberValue(c.b, scope.SourceCode),
-                new NumberValue(c.a, scope.SourceCode)
+            return new RuntimeResult().Success(new Color(
+                new NumberValue(c.r),
+                new NumberValue(c.g),
+                new NumberValue(c.b),
+                new NumberValue(c.a)
             ));
         }
         public static RuntimeResult ColorAlphaBlend(Stenguage.Runtime.Environment scope, Position start, Position end,
@@ -445,11 +445,11 @@ namespace RayLibStenguage
                     (byte)tint.A.Value
                 )
             );
-            return new RuntimeResult().Success(new Color(scope.SourceCode,
-                new NumberValue(c.r, scope.SourceCode),
-                new NumberValue(c.g, scope.SourceCode),
-                new NumberValue(c.b, scope.SourceCode),
-                new NumberValue(c.a, scope.SourceCode)
+            return new RuntimeResult().Success(new Color(
+                new NumberValue(c.r),
+                new NumberValue(c.g),
+                new NumberValue(c.b),
+                new NumberValue(c.a)
             ));
         }
         // Color GetColor(unsigned int hexValue);
@@ -463,8 +463,8 @@ namespace RayLibStenguage
                     (int)width.Value,
                     (int)height.Value,
                     (PixelFormat)format.Value
-                ), 
-            scope.SourceCode));
+                )
+            ));
         }
 
     }

@@ -19,13 +19,13 @@ namespace RayLibStenguage
         // void UnloadFontData(GlyphInfo *chars, int glyphCount);
         // void UnloadFont(Font font);
         // bool ExportFontAsCode(Font font, string fileName);
-        public static RuntimeResult DrawFPS(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult DrawFPS(Context ctx,
             NumberValue posX, NumberValue posY)
         {
             Raylib.DrawFPS((int)posX.Value, (int)posY.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult DrawText(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult DrawText(Context ctx, 
             StringValue text, NumberValue posX, NumberValue posY, NumberValue fontSize, Color color)
         {
             Raylib.DrawText(
@@ -40,21 +40,21 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
         // void DrawTextEx(Font font, string text, Vector2 position, float fontSize, float spacing, Color tint);
         // void DrawTextPro(Font font, string text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color tint);
         // void DrawTextCodepoint(Font font, int codepoint, Vector2 position, float fontSize, Color tint);
         // void DrawTextCodepoints(Font font, const int *codepoints, int count, Vector2 position, float fontSize, float spacing, Color tint);
-        public static RuntimeResult MeasureText(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult MeasureText(Context ctx, 
             StringValue text, NumberValue fontSize)
         {
             return new RuntimeResult().Success(new NumberValue(
                 Raylib.MeasureText(
                     text.Value,
                     (int)fontSize.Value
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
         // Vector2 MeasureTextEx(Font font, string text, float fontSize, float spacing);
         // int GetGlyphIndex(Font font, int codepoint);
@@ -64,29 +64,29 @@ namespace RayLibStenguage
         // void UnloadUTF8(char *text);
         // int *LoadCodepoints(string text, int *count);
         // void UnloadCodepoints(int *codepoints);
-        public static RuntimeResult GetCodepointCount(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult GetCodepointCount(Context ctx, 
             StringValue text)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetCodepointCount(text.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetCodepointCount(text.Value)));
         }
         // int GetCodepoint(string text, int *codepointSize);
         // int GetCodepointNext(string text, int *codepointSize);
         // int GetCodepointPrevious(string text, int *codepointSize);
         // string CodepointToUTF8(int codepoint, int *utf8Size);
         // int TextCopy(char *dst, string src);
-        public unsafe static RuntimeResult TextIsEqual(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public unsafe static RuntimeResult TextIsEqual(Context ctx,
             StringValue text1, StringValue text2)
         {
             return new RuntimeResult().Success(new BooleanValue(
                 Raylib.TextIsEqual(
                     Utils.StringToSBytePtr(text1.Value),
                     Utils.StringToSBytePtr(text2.Value)
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
         // unsigned int TextLength(string text);
         // string TextFormat(string text, ...);
-        public unsafe static RuntimeResult TextSubtext(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public unsafe static RuntimeResult TextSubtext(Context ctx,
             StringValue text, NumberValue position, NumberValue length)
         {
             return new RuntimeResult().Success(new StringValue(
@@ -96,25 +96,25 @@ namespace RayLibStenguage
                         (int)position.Value,
                         (int)length.Value
                     )
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
         // char *TextReplace(char *text, string replace, string by);
         // char *TextInsert(string text, string insert, int position);
         // string TextJoin(string *textList, int count, string delimiter);
         // string *TextSplit(string text, char delimiter, int *count);
         // void TextAppend(char *text, string append, int *position);
-        public unsafe static RuntimeResult TextFindIndex(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult TextFindIndex(Context ctx, 
             StringValue text, StringValue find)
         {
             return new RuntimeResult().Success(new NumberValue(
                 Raylib.TextFindIndex(
                     Utils.StringToSBytePtr(text.Value),
                     Utils.StringToSBytePtr(find.Value)
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult TextToUpper(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult TextToUpper(Context ctx, 
             StringValue text)
         {
             return new RuntimeResult().Success(new StringValue(
@@ -122,10 +122,10 @@ namespace RayLibStenguage
                     (IntPtr)Raylib.TextToUpper(
                         Utils.StringToSBytePtr(text.Value)
                     )
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult TextToLower(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public unsafe static RuntimeResult TextToLower(Context ctx,
             StringValue text)
         {
             return new RuntimeResult().Success(new StringValue(
@@ -133,10 +133,10 @@ namespace RayLibStenguage
                     (IntPtr)Raylib.TextToLower(
                         Utils.StringToSBytePtr(text.Value)
                     )
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult TextToPascal(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public unsafe static RuntimeResult TextToPascal(Context ctx,
             StringValue text)
         {
             return new RuntimeResult().Success(new StringValue(
@@ -144,17 +144,17 @@ namespace RayLibStenguage
                     (IntPtr)Raylib.TextToPascal(
                         Utils.StringToSBytePtr(text.Value)
                     )
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult TextToInteger(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult TextToInteger(Context ctx, 
             StringValue text)
         {
             return new RuntimeResult().Success(new NumberValue(
                 Raylib.TextToInteger(
                     Utils.StringToSBytePtr(text.Value)
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
     }
 }

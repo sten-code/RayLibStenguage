@@ -10,7 +10,7 @@ namespace RayLibStenguage
 {
     public class RCore
     {
-        public static RuntimeResult InitWindow(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult InitWindow(Context ctx, 
             NumberValue width, NumberValue height, StringValue title)
         {
             Raylib.InitWindow(
@@ -19,297 +19,297 @@ namespace RayLibStenguage
                 title.Value
             );
 
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult WindowShouldClose(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult WindowShouldClose(Context ctx)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.WindowShouldClose(), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.WindowShouldClose()));
         }
-        public static RuntimeResult CloseWindow(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult CloseWindow(Context ctx)
         {
             Raylib.CloseWindow();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult IsWindowReady(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult IsWindowReady(Context ctx)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowReady(), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowReady()));
         }
-        public static RuntimeResult IsWindowFullscreen(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult IsWindowFullscreen(Context ctx)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowFullscreen(), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowFullscreen()));
         }
-        public static RuntimeResult IsWindowHidden(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult IsWindowHidden(Context ctx)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowHidden(), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowHidden()));
         }
-        public static RuntimeResult IsWindowMinimized(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult IsWindowMinimized(Context ctx)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowMinimized(), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowMinimized()));
         }
-        public static RuntimeResult IsWindowMaximized(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult IsWindowMaximized(Context ctx)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowMaximized(), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowMaximized()));
         }
-        public static RuntimeResult IsWindowFocused(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult IsWindowFocused(Context ctx)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowFocused(), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowFocused()));
         }
-        public static RuntimeResult IsWindowResized(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult IsWindowResized(Context ctx)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowResized(), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowResized()));
         }
-        public static RuntimeResult IsWindowState(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult IsWindowState(Context ctx, 
             NumberValue flag)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowState((ConfigFlags)flag.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsWindowState((ConfigFlags)flag.Value)));
         }
-        public static RuntimeResult SetWindowState(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetWindowState(Context ctx, 
             NumberValue flags)
         {
             Raylib.SetWindowState((ConfigFlags)flags.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult ClearWindowState(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult ClearWindowState(Context ctx, 
             NumberValue flags)
         {
             Raylib.ClearWindowState((ConfigFlags)flags.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult ToggleFullscreen(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult ToggleFullscreen(Context ctx)
         {
             Raylib.ToggleFullscreen();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult MaximizeWindow(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult MaximizeWindow(Context ctx)
         {
             Raylib.MaximizeWindow();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult MinimizeWindow(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult MinimizeWindow(Context ctx)
         {
             Raylib.MinimizeWindow();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult RestoreWindow(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult RestoreWindow(Context ctx)
         {
             Raylib.RestoreWindow();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult SetWindowIcon(Stenguage.Runtime.Environment scope, Position start, Position end, Image image)
+        public static RuntimeResult SetWindowIcon(Context ctx, Image image)
         {
             Raylib.SetWindowIcon(image.Source);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public unsafe static RuntimeResult SetWindowIcons(Stenguage.Runtime.Environment scope, Position start, Position end, ListValue images)
+        public unsafe static RuntimeResult SetWindowIcons(Context ctx, ListValue images)
         {
             fixed (Raylib_cs.Image* imgs = images.Items.Cast<Image>().Select(img => img.Source).ToArray())
             {
                 Raylib.SetWindowIcons(imgs, images.Items.Count);
             }
 
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult SetWindowTitle(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetWindowTitle(Context ctx, 
             StringValue title)
         {
             Raylib.SetWindowTitle(title.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult SetWindowPosition(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetWindowPosition(Context ctx, 
             NumberValue x, NumberValue y)
         {
             Raylib.SetWindowPosition(
                 (int)x.Value, 
                 (int)y.Value
             );
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult SetWindowMonitor(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetWindowMonitor(Context ctx, 
             NumberValue monitor)
         {
             Raylib.SetWindowMonitor((int)monitor.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult SetWindowMinSize(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult SetWindowMinSize(Context ctx,
             NumberValue width, NumberValue height)
         {
             Raylib.SetWindowMinSize(
                 (int)width.Value, 
                 (int)height.Value
             );
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult SetWindowSize(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetWindowSize(Context ctx, 
             NumberValue width, NumberValue height)
         {
             Raylib.SetWindowSize(
                 (int)width.Value, 
                 (int)height.Value
             );
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult SetWindowOpacity(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetWindowOpacity(Context ctx, 
             NumberValue opacity)
         {
             Raylib.SetWindowOpacity((float)opacity.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public unsafe static RuntimeResult GetWindowHandle(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public unsafe static RuntimeResult GetWindowHandle(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(((IntPtr)Raylib.GetWindowHandle()).ToInt64(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(((IntPtr)Raylib.GetWindowHandle()).ToInt64()));
         }
-        public static RuntimeResult GetScreenWidth(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetScreenWidth(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetScreenWidth(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetScreenWidth()));
         }
-        public static RuntimeResult GetScreenHeight(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetScreenHeight(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetScreenHeight(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetScreenHeight()));
         }
-        public static RuntimeResult GetRenderWidth(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetRenderWidth(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetRenderWidth(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetRenderWidth()));
         }
-        public static RuntimeResult GetRenderHeight(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetRenderHeight(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetRenderHeight(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetRenderHeight()));
         }
-        public static RuntimeResult GetMonitorCount(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetMonitorCount(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetMonitorCount(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetMonitorCount()));
         }
-        public static RuntimeResult GetCurrentMonitor(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetCurrentMonitor(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetCurrentMonitor(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetCurrentMonitor()));
         }
-        public static RuntimeResult GetMonitorPosition(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult GetMonitorPosition(Context ctx, 
             NumberValue monitor)
         {
             System.Numerics.Vector2 vector = Raylib.GetMonitorPosition((int)monitor.Value);
-            return new RuntimeResult().Success(new Vector2(scope.SourceCode,
-                new NumberValue(vector.X, scope.SourceCode), 
-                new NumberValue(vector.Y, scope.SourceCode) 
+            return new RuntimeResult().Success(new Vector2(
+                new NumberValue(vector.X), 
+                new NumberValue(vector.Y) 
             ));
         }
-        public static RuntimeResult GetMonitorWidth(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult GetMonitorWidth(Context ctx, 
             NumberValue monitor)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetMonitorWidth((int)monitor.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetMonitorWidth((int)monitor.Value)));
         }
-        public static RuntimeResult GetMonitorHeight(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult GetMonitorHeight(Context ctx, 
             NumberValue monitor)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetMonitorHeight((int)monitor.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetMonitorHeight((int)monitor.Value)));
         }
-        public static RuntimeResult GetMonitorPhysicalWidth(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult GetMonitorPhysicalWidth(Context ctx,
             NumberValue monitor)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetMonitorPhysicalWidth((int)monitor.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetMonitorPhysicalWidth((int)monitor.Value)));
         }
-        public static RuntimeResult GetMonitorPhysicalHeight(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult GetMonitorPhysicalHeight(Context ctx, 
             NumberValue monitor)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetMonitorPhysicalHeight((int)monitor.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetMonitorPhysicalHeight((int)monitor.Value)));
         }
-        public static RuntimeResult GetMonitorRefreshRate(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult GetMonitorRefreshRate(Context ctx, 
             NumberValue monitor)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetMonitorRefreshRate((int)monitor.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetMonitorRefreshRate((int)monitor.Value)));
         }
-        public static RuntimeResult GetWindowPosition(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetWindowPosition(Context ctx)
         {
             System.Numerics.Vector2 vector = Raylib.GetWindowPosition();
-            return new RuntimeResult().Success(new Vector2(scope.SourceCode,
-                new NumberValue(vector.X, scope.SourceCode), 
-                new NumberValue(vector.Y, scope.SourceCode)
+            return new RuntimeResult().Success(new Vector2(
+                new NumberValue(vector.X), 
+                new NumberValue(vector.Y)
             ));
         }
-        public static RuntimeResult GetWindowScaleDPI(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetWindowScaleDPI(Context ctx)
         {
             System.Numerics.Vector2 vector = Raylib.GetWindowScaleDPI();
-            return new RuntimeResult().Success(new Vector2(scope.SourceCode,
-                new NumberValue(vector.X, scope.SourceCode), 
-                new NumberValue(vector.Y, scope.SourceCode) 
+            return new RuntimeResult().Success(new Vector2(
+                new NumberValue(vector.X), 
+                new NumberValue(vector.Y) 
             ));
         }
-        public unsafe static RuntimeResult GetMonitorName(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult GetMonitorName(Context ctx, 
             NumberValue monitor)
         {
             return new RuntimeResult().Success(new StringValue(
                 Marshal.PtrToStringAnsi(
                     (IntPtr)Raylib.GetMonitorName((int)monitor.Value)
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public static RuntimeResult SetClipboardText(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetClipboardText(Context ctx, 
             StringValue text)
         {
             Raylib.SetClipboardText(text.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public unsafe static RuntimeResult GetClipboardText(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public unsafe static RuntimeResult GetClipboardText(Context ctx)
         {
             return new RuntimeResult().Success(new StringValue(
                 Marshal.PtrToStringAnsi(
                     (IntPtr)Raylib.GetClipboardText()
-                ), 
-            scope.SourceCode));
+                )
+            ));
         }
-        public static RuntimeResult EnableEventWaiting(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult EnableEventWaiting(Context ctx)
         {
             Raylib.EnableEventWaiting();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult DisableEventWaiting(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult DisableEventWaiting(Context ctx)
         {
             Raylib.DisableEventWaiting();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult SwapScreenBuffer(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult SwapScreenBuffer(Context ctx)
         {
             Raylib.SwapScreenBuffer();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult PollInputEvents(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult PollInputEvents(Context ctx)
         {
             Raylib.PollInputEvents();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult WaitTime(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult WaitTime(Context ctx, 
             NumberValue seconds)
         {
             Raylib.WaitTime(seconds.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult ShowCursor(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult ShowCursor(Context ctx)
         {
             Raylib.ShowCursor();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult HideCursor(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult HideCursor(Context ctx)
         {
             Raylib.HideCursor();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult IsCursorHidden(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult IsCursorHidden(Context ctx)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsCursorHidden(), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsCursorHidden()));
         }
-        public static RuntimeResult EnableCursor(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult EnableCursor(Context ctx)
         {
             Raylib.EnableCursor();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult DisableCursor(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult DisableCursor(Context ctx)
         {
             Raylib.DisableCursor();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult IsCursorOnScreen(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult IsCursorOnScreen(Context ctx)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsCursorOnScreen(), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsCursorOnScreen()));
         }
-        public static RuntimeResult ClearBackground(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult ClearBackground(Context ctx, 
             Color color)
         {
             Raylib.ClearBackground(
@@ -320,58 +320,58 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult BeginDrawing(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult BeginDrawing(Context ctx)
         {
             Raylib.BeginDrawing();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult EndDrawing(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult EndDrawing(Context ctx)
         {
             Raylib.EndDrawing();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
         // void BeginMode2D(Camera2D camera);
 
-        public static RuntimeResult EndMode2D(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult EndMode2D(Context ctx)
         {
             Raylib.EndMode2D();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
         // void BeginMode3D(Camera3D camera);
 
-        public static RuntimeResult EndMode3D(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult EndMode3D(Context ctx)
         {
             Raylib.EndMode3D();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
         // void BeginTextureMode(RenderTexture2D target);
 
-        public static RuntimeResult EndTextureMode(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult EndTextureMode(Context ctx)
         {
             Raylib.EndTextureMode();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
         // void BeginShaderMode(Shader shader);
 
-        public static RuntimeResult EndShaderMode(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult EndShaderMode(Context ctx)
         {
             Raylib.EndShaderMode();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult BeginBlendMode(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult BeginBlendMode(Context ctx, 
             NumberValue mode)
         {
             Raylib.BeginBlendMode((BlendMode)mode.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult EndBlendMode(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult EndBlendMode(Context ctx)
         {
             Raylib.EndBlendMode();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult BeginScissorMode(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult BeginScissorMode(Context ctx, 
             NumberValue x, NumberValue y, NumberValue width, NumberValue height)
         {
             Raylib.BeginScissorMode(
@@ -380,19 +380,19 @@ namespace RayLibStenguage
                 (int)width.Value, 
                 (int)height.Value
             );
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult EndScissorMode(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult EndScissorMode(Context ctx)
         {
             Raylib.EndScissorMode();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
         // void BeginVrStereoMode(VrStereoConfig config);
 
-        public static RuntimeResult EndVrStereoMode(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult EndVrStereoMode(Context ctx)
         {
             Raylib.EndVrStereoMode();
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
         // VrStereoConfig LoadVrStereoConfig(VrDeviceInfo device);
 
@@ -432,66 +432,66 @@ namespace RayLibStenguage
 
         // Vector2 GetWorldToScreen2D(Vector2 position, Camera2D camera);
 
-        public static RuntimeResult SetTargetFPS(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetTargetFPS(Context ctx, 
             NumberValue fps)
         {
             Raylib.SetTargetFPS((int)fps.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult GetFPS(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetFPS(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetFPS(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetFPS()));
         }
-        public static RuntimeResult GetFrameTime(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetFrameTime(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetFrameTime(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetFrameTime()));
         }
-        public static RuntimeResult GetTime(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetTime(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetTime(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetTime()));
         }
-        public static RuntimeResult GetRandomValue(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult GetRandomValue(Context ctx, 
             NumberValue min, NumberValue max)
         {
             return new RuntimeResult().Success(new NumberValue(
                 Raylib.GetRandomValue(
                     (int)min.Value, 
                     (int)max.Value
-                ), 
-            scope.SourceCode));
+                )
+            ));
         }
-        public static RuntimeResult SetRandomSeed(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetRandomSeed(Context ctx, 
             NumberValue seed)
         {
             Raylib.SetRandomSeed((uint)seed.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult TakeScreenshot(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult TakeScreenshot(Context ctx,
             StringValue fileName)
         {
             Raylib.TakeScreenshot(fileName.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult SetConfigFlags(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetConfigFlags(Context ctx, 
             NumberValue flags)
         {
             Raylib.SetConfigFlags((ConfigFlags)flags.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public unsafe static RuntimeResult TraceLog(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult TraceLog(Context ctx, 
             NumberValue logLevel, StringValue text)
         {
             Raylib.TraceLog(
                 (TraceLogLevel)logLevel.Value, 
                 Utils.StringToSBytePtr(text.Value)
             );
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult SetTraceLogLevel(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetTraceLogLevel(Context ctx, 
             NumberValue logLevel)
         {
             Raylib.SetTraceLogLevel((TraceLogLevel)logLevel.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
         // void *MemAlloc(int size);
 
@@ -499,11 +499,11 @@ namespace RayLibStenguage
 
         // void MemFree(void *ptr);
 
-        public static RuntimeResult OpenURL(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult OpenURL(Context ctx, 
             StringValue url)
         {
             Raylib.OpenURL(url.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
         // void SetTraceLogCallback(TraceLogCallback callback);
 
@@ -515,7 +515,7 @@ namespace RayLibStenguage
 
         // void SetSaveFileTextCallback(SaveFileTextCallback callback);
 
-        public unsafe static RuntimeResult LoadFileData(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult LoadFileData(Context ctx, 
             StringValue fileName, ListValue bytesRead)
         {
             uint* array = stackalloc uint[bytesRead.Items.Count];
@@ -528,9 +528,9 @@ namespace RayLibStenguage
             }
 
             Raylib.LoadFileData(Utils.StringToSBytePtr(fileName.Value), array);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public unsafe static RuntimeResult UnloadFileData(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult UnloadFileData(Context ctx, 
             ListValue data)
         {
             byte* bytes = stackalloc byte[data.Items.Count];
@@ -543,11 +543,11 @@ namespace RayLibStenguage
             }
 
             Raylib.UnloadFileData(bytes);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
 
         #region Save File Data
-        public unsafe static RuntimeResult SaveFileData(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult SaveFileData(Context ctx, 
             StringValue fileName, ListValue data, NumberValue bytesToWrite)
         {
             byte* bytes = stackalloc byte[data.Items.Count];
@@ -560,9 +560,9 @@ namespace RayLibStenguage
             }
 
             Raylib.SaveFileData(Utils.StringToSBytePtr(fileName.Value), bytes, (uint)bytesToWrite.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public unsafe static RuntimeResult SaveFileData(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult SaveFileData(Context ctx, 
             StringValue fileName, ListValue data)
         {
             byte* bytes = stackalloc byte[data.Items.Count];
@@ -575,9 +575,9 @@ namespace RayLibStenguage
             }
 
             Raylib.SaveFileData(Utils.StringToSBytePtr(fileName.Value), bytes, (uint)data.Items.Count);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public unsafe static RuntimeResult SaveFileData(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult SaveFileData(Context ctx, 
             StringValue fileName, StringValue data, NumberValue bytesToWrite)
         {
             byte* bytes = stackalloc byte[data.Value.Length];
@@ -587,9 +587,9 @@ namespace RayLibStenguage
             }
 
             Raylib.SaveFileData(Utils.StringToSBytePtr(fileName.Value), bytes, (uint)bytesToWrite.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public unsafe static RuntimeResult SaveFileData(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult SaveFileData(Context ctx, 
             StringValue fileName, StringValue data)
         {
             byte* bytes = stackalloc byte[data.Value.Length];
@@ -599,11 +599,11 @@ namespace RayLibStenguage
             }
 
             Raylib.SaveFileData(Utils.StringToSBytePtr(fileName.Value), bytes, (uint)data.Value.Length);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
         #endregion
 
-        public unsafe static RuntimeResult ExportDataAsCode(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public unsafe static RuntimeResult ExportDataAsCode(Context ctx,
             ListValue data, NumberValue size, StringValue fileName)
         {
             byte* bytes = stackalloc byte[data.Items.Count];
@@ -619,9 +619,9 @@ namespace RayLibStenguage
                 bytes, 
                 (uint)size.Value, 
                 Utils.StringToSBytePtr(fileName.Value)
-            ), scope.SourceCode));
+            )));
         }
-        public unsafe static RuntimeResult LoadFileText(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult LoadFileText(Context ctx, 
             StringValue fileName)
         {
             return new RuntimeResult().Success(new StringValue(
@@ -629,63 +629,63 @@ namespace RayLibStenguage
                     Raylib.LoadFileText(
                         Utils.StringToSBytePtr(fileName.Value)
                     )
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult UnloadFileText(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult UnloadFileText(Context ctx, 
             StringValue text)
         {
             Raylib.UnloadFileText(Utils.StringToSBytePtr(text.Value));
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public unsafe static RuntimeResult SaveFileText(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult SaveFileText(Context ctx, 
             StringValue fileName, StringValue text)
         {
             return new RuntimeResult().Success(new BooleanValue(
                 Raylib.SaveFileText(
                     Utils.StringToSBytePtr(fileName.Value), 
                     Utils.StringToSBytePtr(text.Value)
-                ), scope.SourceCode)
+                ))
             );
         }
-        public unsafe static RuntimeResult FileExists(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult FileExists(Context ctx, 
             StringValue fileName)
         {
             return new RuntimeResult().Success(new BooleanValue(
                 Raylib.FileExists(
                     Utils.StringToSBytePtr(fileName.Value)
-                ), 
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult DirectoryExists(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public unsafe static RuntimeResult DirectoryExists(Context ctx,
             StringValue dirPath)
         {
             return new RuntimeResult().Success(new BooleanValue(
                 Raylib.DirectoryExists(
                     Utils.StringToSBytePtr(dirPath.Value)
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public static RuntimeResult IsFileExtension(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult IsFileExtension(Context ctx,
             StringValue fileName, StringValue ext)
         {
             return new RuntimeResult().Success(new BooleanValue(
                 Raylib.IsFileExtension(
                     fileName.Value, 
                     ext.Value
-                ), 
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult GetFileLength(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult GetFileLength(Context ctx, 
             StringValue fileName)
         {
             return new RuntimeResult().Success(new NumberValue(
                 Raylib.GetFileLength(
                     Utils.StringToSBytePtr(fileName.Value)
-                ), 
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult GetFileExtension(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public unsafe static RuntimeResult GetFileExtension(Context ctx,
             StringValue fileName)
         {
             return new RuntimeResult().Success(new StringValue(
@@ -693,10 +693,10 @@ namespace RayLibStenguage
                     (IntPtr)Raylib.GetFileExtension(
                         Utils.StringToSBytePtr(fileName.Value)
                     )
-                ), 
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult GetFileName(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult GetFileName(Context ctx, 
             StringValue filePath)
         {
             return new RuntimeResult().Success(new StringValue(
@@ -704,10 +704,10 @@ namespace RayLibStenguage
                     (IntPtr)Raylib.GetFileName(
                         Utils.StringToSBytePtr(filePath.Value)
                     )
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult GetFileNameWithoutExt(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult GetFileNameWithoutExt(Context ctx, 
             StringValue filePath)
         {
             return new RuntimeResult().Success(new StringValue(
@@ -715,10 +715,10 @@ namespace RayLibStenguage
                     (IntPtr)Raylib.GetFileNameWithoutExt(
                         Utils.StringToSBytePtr(filePath.Value)
                     )
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult GetDirectoryPath(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public unsafe static RuntimeResult GetDirectoryPath(Context ctx,
             StringValue filePath)
         {
             return new RuntimeResult().Success(new StringValue(
@@ -726,10 +726,10 @@ namespace RayLibStenguage
                     (IntPtr)Raylib.GetDirectoryPath(
                         Utils.StringToSBytePtr(filePath.Value)
                     )
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult GetPrevDirectoryPath(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public unsafe static RuntimeResult GetPrevDirectoryPath(Context ctx,
             StringValue dirPath)
         {
             return new RuntimeResult().Success(new StringValue(
@@ -737,42 +737,42 @@ namespace RayLibStenguage
                     (IntPtr)Raylib.GetPrevDirectoryPath(
                         Utils.StringToSBytePtr(dirPath.Value)
                     )
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult GetWorkingDirectory(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public unsafe static RuntimeResult GetWorkingDirectory(Context ctx)
         {
             return new RuntimeResult().Success(new StringValue(
                 Marshal.PtrToStringAnsi(
                     (IntPtr)Raylib.GetWorkingDirectory()
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult GetApplicationDirectory(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public unsafe static RuntimeResult GetApplicationDirectory(Context ctx)
         {
             return new RuntimeResult().Success(new StringValue(
                 Marshal.PtrToStringAnsi(
                     (IntPtr)Raylib.GetApplicationDirectory()
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult ChangeDirectory(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public unsafe static RuntimeResult ChangeDirectory(Context ctx, 
             StringValue dir)
         {
             return new RuntimeResult().Success(new BooleanValue(
                 Raylib.ChangeDirectory(
                     Utils.StringToSBytePtr(dir.Value)
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public unsafe static RuntimeResult IsPathFile(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public unsafe static RuntimeResult IsPathFile(Context ctx,
             StringValue path)
         {
             return new RuntimeResult().Success(new BooleanValue(
                 Raylib.IsPathFile(
                     Utils.StringToSBytePtr(path.Value)
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
         // FilePathList LoadDirectoryFiles(string dirPath);
 
@@ -780,18 +780,18 @@ namespace RayLibStenguage
 
         // void UnloadDirectoryFiles(FilePathList files);
 
-        public static RuntimeResult IsFileDropped(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult IsFileDropped(Context ctx)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsFileDropped(), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsFileDropped()));
         }
         // FilePathList LoadDroppedFiles(void);
 
         // void UnloadDroppedFiles(FilePathList files);
 
-        public static RuntimeResult GetFileModTime(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult GetFileModTime(Context ctx,
             StringValue fileName)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetFileModTime(fileName.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetFileModTime(fileName.Value)));
         }
         // string CompressData(string data, int dataSize, int *compDataSize);
 
@@ -801,262 +801,262 @@ namespace RayLibStenguage
 
         // string DecodeDataBase64(string data, int *outputSize);
 
-        public static RuntimeResult IsKeyPressed(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult IsKeyPressed(Context ctx, 
             NumberValue key)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsKeyPressed((KeyboardKey)key.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsKeyPressed((KeyboardKey)key.Value)));
         }
-        public static RuntimeResult IsKeyDown(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult IsKeyDown(Context ctx,
             NumberValue key)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsKeyDown((KeyboardKey)key.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsKeyDown((KeyboardKey)key.Value)));
         }
-        public static RuntimeResult IsKeyReleased(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult IsKeyReleased(Context ctx, 
             NumberValue key)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsKeyReleased((KeyboardKey)key.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsKeyReleased((KeyboardKey)key.Value)));
         }
-        public static RuntimeResult IsKeyUp(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult IsKeyUp(Context ctx,
             NumberValue key)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsKeyUp((KeyboardKey)key.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsKeyUp((KeyboardKey)key.Value)));
         }
-        public static RuntimeResult SetExitKey(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetExitKey(Context ctx, 
             NumberValue key)
         {
             Raylib.SetExitKey((KeyboardKey)key.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult GetKeyPressed(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetKeyPressed(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetKeyPressed(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetKeyPressed()));
         }
-        public static RuntimeResult GetCharPressed(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetCharPressed(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetCharPressed(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetCharPressed()));
         }
-        public static RuntimeResult IsGamepadAvailable(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult IsGamepadAvailable(Context ctx, 
             NumberValue gamepad)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsGamepadAvailable((int)gamepad.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsGamepadAvailable((int)gamepad.Value)));
         }
-        public unsafe static RuntimeResult GetGamepadName(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public unsafe static RuntimeResult GetGamepadName(Context ctx,
             NumberValue gamepad)
         {
-            return new RuntimeResult().Success(new StringValue(Marshal.PtrToStringAnsi((IntPtr)Raylib.GetGamepadName((int)gamepad.Value)), scope.SourceCode));
+            return new RuntimeResult().Success(new StringValue(Marshal.PtrToStringAnsi((IntPtr)Raylib.GetGamepadName((int)gamepad.Value))));
         }
-        public static RuntimeResult IsGamepadButtonPressed(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult IsGamepadButtonPressed(Context ctx, 
             NumberValue gamepad, NumberValue button)
         {
             return new RuntimeResult().Success(new BooleanValue(
                 Raylib.IsGamepadButtonPressed(
                     (int)gamepad.Value, 
                     (GamepadButton)button.Value
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public static RuntimeResult IsGamepadButtonDown(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult IsGamepadButtonDown(Context ctx,
             NumberValue gamepad, NumberValue button)
         {
             return new RuntimeResult().Success(new BooleanValue(
                 Raylib.IsGamepadButtonDown(
                     (int)gamepad.Value, 
                     (GamepadButton)button.Value
-                ), 
-            scope.SourceCode));
+                )
+            ));
         }
-        public static RuntimeResult IsGamepadButtonReleased(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult IsGamepadButtonReleased(Context ctx,
             NumberValue gamepad, NumberValue button)
         {
             return new RuntimeResult().Success(new BooleanValue(
                 Raylib.IsGamepadButtonReleased(
                     (int)gamepad.Value, 
                     (GamepadButton)button.Value
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public static RuntimeResult IsGamepadButtonUp(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult IsGamepadButtonUp(Context ctx, 
             NumberValue gamepad, NumberValue button)
         {
             return new RuntimeResult().Success(new BooleanValue(
                 Raylib.IsGamepadButtonUp(
                     (int)gamepad.Value, 
                     (GamepadButton)button.Value
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public static RuntimeResult GetGamepadButtonPressed(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetGamepadButtonPressed(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetGamepadButtonPressed(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetGamepadButtonPressed()));
         }
-        public static RuntimeResult GetGamepadAxisCount(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult GetGamepadAxisCount(Context ctx, 
             NumberValue gamepad)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetGamepadAxisCount((int)gamepad.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetGamepadAxisCount((int)gamepad.Value)));
         }
-        public static RuntimeResult GetGamepadAxisMovement(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult GetGamepadAxisMovement(Context ctx, 
             NumberValue gamepad, NumberValue axis)
         {
             return new RuntimeResult().Success(new NumberValue(
                 Raylib.GetGamepadAxisMovement(
                     (int)gamepad.Value, 
                     (GamepadAxis)axis.Value
-                ),
-            scope.SourceCode));
+                )
+            ));
         }
-        public static RuntimeResult SetGamepadMappings(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetGamepadMappings(Context ctx, 
             StringValue mappings)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.SetGamepadMappings(mappings.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.SetGamepadMappings(mappings.Value)));
         }
-        public static RuntimeResult IsMouseButtonPressed(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult IsMouseButtonPressed(Context ctx, 
             NumberValue button)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsMouseButtonPressed((MouseButton)button.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsMouseButtonPressed((MouseButton)button.Value)));
         }
-        public static RuntimeResult IsMouseButtonDown(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult IsMouseButtonDown(Context ctx, 
             NumberValue button)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsMouseButtonDown((MouseButton)button.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsMouseButtonDown((MouseButton)button.Value)));
         }
-        public static RuntimeResult IsMouseButtonReleased(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult IsMouseButtonReleased(Context ctx,
             NumberValue button)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsMouseButtonReleased((MouseButton)button.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsMouseButtonReleased((MouseButton)button.Value)));
         }
-        public static RuntimeResult IsMouseButtonUp(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult IsMouseButtonUp(Context ctx, 
             NumberValue button)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsMouseButtonUp((MouseButton)button.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsMouseButtonUp((MouseButton)button.Value)));
         }
-        public static RuntimeResult GetMouseX(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetMouseX(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetMouseX(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetMouseX()));
         }
-        public static RuntimeResult GetMouseY(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetMouseY(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetMouseY(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetMouseY()));
         }
-        public static RuntimeResult GetMousePosition(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetMousePosition(Context ctx)
         {
             System.Numerics.Vector2 vector = Raylib.GetMousePosition();
-            return new RuntimeResult().Success(new Vector2(scope.SourceCode,
-                new NumberValue(vector.X, scope.SourceCode),
-                new NumberValue(vector.Y, scope.SourceCode) 
+            return new RuntimeResult().Success(new Vector2(
+                new NumberValue(vector.X),
+                new NumberValue(vector.Y) 
             ));
         }
-        public static RuntimeResult GetMouseDelta(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetMouseDelta(Context ctx)
         {
             System.Numerics.Vector2 vector = Raylib.GetMouseDelta();
-            return new RuntimeResult().Success(new Vector2(scope.SourceCode,
-                new NumberValue(vector.X, scope.SourceCode), 
-                new NumberValue(vector.Y, scope.SourceCode) 
+            return new RuntimeResult().Success(new Vector2(
+                new NumberValue(vector.X), 
+                new NumberValue(vector.Y) 
             ));
         }
-        public static RuntimeResult SetMousePosition(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetMousePosition(Context ctx, 
             NumberValue x, NumberValue y)
         {
             Raylib.SetMousePosition((int)x.Value, (int)y.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult SetMouseOffset(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult SetMouseOffset(Context ctx, 
             NumberValue offsetX, NumberValue offsetY)
         {
             Raylib.SetMouseOffset((int)offsetX.Value, (int)offsetY.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult SetMouseScale(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult SetMouseScale(Context ctx,
             NumberValue scaleX, NumberValue scaleY)
         {
             Raylib.SetMouseScale((float)scaleX.Value, (float)scaleY.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult GetMouseWheelMove(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetMouseWheelMove(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetMouseWheelMove(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetMouseWheelMove()));
         }
-        public static RuntimeResult GetMouseWheelMoveV(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetMouseWheelMoveV(Context ctx)
         {
             System.Numerics.Vector2 vector = Raylib.GetMouseWheelMoveV();
-            return new RuntimeResult().Success(new Vector2(scope.SourceCode,
-                new NumberValue(vector.X, scope.SourceCode), 
-                new NumberValue(vector.Y, scope.SourceCode) 
+            return new RuntimeResult().Success(new Vector2(
+                new NumberValue(vector.X), 
+                new NumberValue(vector.Y) 
             ));
         }
-        public static RuntimeResult SetMouseCursor(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult SetMouseCursor(Context ctx,
             NumberValue cursor)
         {
             Raylib.SetMouseCursor((MouseCursor)cursor.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult GetTouchX(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetTouchX(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetTouchX(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetTouchX()));
         }
-        public static RuntimeResult GetTouchY(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetTouchY(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetTouchY(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetTouchY()));
         }
-        public static RuntimeResult GetTouchPosition(Stenguage.Runtime.Environment scope, Position start, Position end, 
+        public static RuntimeResult GetTouchPosition(Context ctx, 
             NumberValue index)
         {
             System.Numerics.Vector2 vector = Raylib.GetTouchPosition((int)index.Value);
-            return new RuntimeResult().Success(new Vector2(scope.SourceCode,
-                new NumberValue(vector.X, scope.SourceCode), 
-                new NumberValue(vector.Y, scope.SourceCode) 
+            return new RuntimeResult().Success(new Vector2(
+                new NumberValue(vector.X), 
+                new NumberValue(vector.Y) 
             ));
         }
-        public static RuntimeResult GetTouchPointId(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult GetTouchPointId(Context ctx,
             NumberValue index)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetTouchPointId((int)index.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetTouchPointId((int)index.Value)));
         }
-        public static RuntimeResult GetTouchPointCount(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetTouchPointCount(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetTouchPointCount(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetTouchPointCount()));
         }
-        public static RuntimeResult SetGesturesEnabled(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult SetGesturesEnabled(Context ctx,
             NumberValue flags)
         {
             Raylib.SetGesturesEnabled((Gesture)flags.Value);
-            return RuntimeResult.Null(scope.SourceCode);
+            return RuntimeResult.Null();
         }
-        public static RuntimeResult IsGestureDetected(Stenguage.Runtime.Environment scope, Position start, Position end,
+        public static RuntimeResult IsGestureDetected(Context ctx,
             NumberValue gesture)
         {
-            return new RuntimeResult().Success(new BooleanValue(Raylib.IsGestureDetected((Gesture)gesture.Value), scope.SourceCode));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsGestureDetected((Gesture)gesture.Value)));
         }
-        public static RuntimeResult GetGestureDetected(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetGestureDetected(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue((double)Raylib.GetGestureDetected(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue((double)Raylib.GetGestureDetected()));
         }
-        public static RuntimeResult GetGestureHoldDuration(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetGestureHoldDuration(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetGestureHoldDuration(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetGestureHoldDuration()));
         }
-        public static RuntimeResult GetGestureDragVector(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetGestureDragVector(Context ctx)
         {
             System.Numerics.Vector2 vector = Raylib.GetGestureDragVector();
-            return new RuntimeResult().Success(new Vector2(scope.SourceCode,
-                new NumberValue(vector.X, scope.SourceCode),
-                new NumberValue(vector.Y, scope.SourceCode) 
+            return new RuntimeResult().Success(new Vector2(
+                new NumberValue(vector.X),
+                new NumberValue(vector.Y) 
             ));
         }
-        public static RuntimeResult GetGestureDragAngle(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetGestureDragAngle(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetGestureDragAngle(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetGestureDragAngle()));
         }
-        public static RuntimeResult GetGesturePinchVector(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetGesturePinchVector(Context ctx)
         {
             System.Numerics.Vector2 vector = Raylib.GetGesturePinchVector();
-            return new RuntimeResult().Success(new Vector2(scope.SourceCode,
-                new NumberValue(vector.X, scope.SourceCode), 
-                new NumberValue(vector.Y, scope.SourceCode) 
+            return new RuntimeResult().Success(new Vector2(
+                new NumberValue(vector.X), 
+                new NumberValue(vector.Y) 
             ));
         }
-        public static RuntimeResult GetGesturePinchAngle(Stenguage.Runtime.Environment scope, Position start, Position end)
+        public static RuntimeResult GetGesturePinchAngle(Context ctx)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetGesturePinchAngle(), scope.SourceCode));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetGesturePinchAngle()));
         }
         // void UpdateCamera(Camera *camera, int mode);
 
