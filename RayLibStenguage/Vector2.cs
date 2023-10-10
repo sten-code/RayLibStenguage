@@ -1,5 +1,4 @@
-﻿using Stenguage;
-using Stenguage.Runtime.Values;
+﻿using Stenguage.Runtime.Values;
 
 namespace RayLibStenguage
 {
@@ -8,7 +7,7 @@ namespace RayLibStenguage
         public NumberValue X { get; set; }
         public NumberValue Y { get; set; }
 
-        public Vector2(string sourceCode, Position start, Position end, NumberValue x, NumberValue y) : base(sourceCode, start, end)
+        public Vector2(string sourceCode, NumberValue x, NumberValue y) : base(sourceCode)
         {
             X = x;
             Y = x;

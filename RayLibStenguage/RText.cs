@@ -23,7 +23,7 @@ namespace RayLibStenguage
             NumberValue posX, NumberValue posY)
         {
             Raylib.DrawFPS((int)posX.Value, (int)posY.Value);
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawText(Stenguage.Runtime.Environment scope, Position start, Position end, 
             StringValue text, NumberValue posX, NumberValue posY, NumberValue fontSize, Color color)
@@ -40,7 +40,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         // void DrawTextEx(Font font, string text, Vector2 position, float fontSize, float spacing, Color tint);
         // void DrawTextPro(Font font, string text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color tint);
@@ -54,7 +54,7 @@ namespace RayLibStenguage
                     text.Value,
                     (int)fontSize.Value
                 ),
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         // Vector2 MeasureTextEx(Font font, string text, float fontSize, float spacing);
         // int GetGlyphIndex(Font font, int codepoint);
@@ -67,7 +67,7 @@ namespace RayLibStenguage
         public static RuntimeResult GetCodepointCount(Stenguage.Runtime.Environment scope, Position start, Position end, 
             StringValue text)
         {
-            return new RuntimeResult().Success(new NumberValue(Raylib.GetCodepointCount(text.Value), scope.SourceCode, start, end));
+            return new RuntimeResult().Success(new NumberValue(Raylib.GetCodepointCount(text.Value), scope.SourceCode));
         }
         // int GetCodepoint(string text, int *codepointSize);
         // int GetCodepointNext(string text, int *codepointSize);
@@ -82,7 +82,7 @@ namespace RayLibStenguage
                     Utils.StringToSBytePtr(text1.Value),
                     Utils.StringToSBytePtr(text2.Value)
                 ),
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         // unsigned int TextLength(string text);
         // string TextFormat(string text, ...);
@@ -97,7 +97,7 @@ namespace RayLibStenguage
                         (int)length.Value
                     )
                 ),
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         // char *TextReplace(char *text, string replace, string by);
         // char *TextInsert(string text, string insert, int position);
@@ -112,7 +112,7 @@ namespace RayLibStenguage
                     Utils.StringToSBytePtr(text.Value),
                     Utils.StringToSBytePtr(find.Value)
                 ),
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         public unsafe static RuntimeResult TextToUpper(Stenguage.Runtime.Environment scope, Position start, Position end, 
             StringValue text)
@@ -123,7 +123,7 @@ namespace RayLibStenguage
                         Utils.StringToSBytePtr(text.Value)
                     )
                 ),
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         public unsafe static RuntimeResult TextToLower(Stenguage.Runtime.Environment scope, Position start, Position end,
             StringValue text)
@@ -134,7 +134,7 @@ namespace RayLibStenguage
                         Utils.StringToSBytePtr(text.Value)
                     )
                 ),
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         public unsafe static RuntimeResult TextToPascal(Stenguage.Runtime.Environment scope, Position start, Position end,
             StringValue text)
@@ -145,7 +145,7 @@ namespace RayLibStenguage
                         Utils.StringToSBytePtr(text.Value)
                     )
                 ),
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         public unsafe static RuntimeResult TextToInteger(Stenguage.Runtime.Environment scope, Position start, Position end, 
             StringValue text)
@@ -154,7 +154,7 @@ namespace RayLibStenguage
                 Raylib.TextToInteger(
                     Utils.StringToSBytePtr(text.Value)
                 ),
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
     }
 }

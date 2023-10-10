@@ -8,9 +8,9 @@ namespace RayLibStenguage
     {
         public Raylib_cs.Image Source { get; set; }
 
-        public unsafe Image(string sourceCode, Position start, Position end, StringValue filePath) : base(sourceCode, start, end)
+        public unsafe Image(string sourceCode) : base(sourceCode)
         {
-            Source = Raylib.LoadImage(Utils.StringToSBytePtr(filePath.Value));
+            
         }
 
     }

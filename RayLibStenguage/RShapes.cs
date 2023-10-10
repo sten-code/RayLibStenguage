@@ -21,7 +21,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawPixelV(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 position, Color color)
@@ -35,7 +35,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawLine(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue startPosX, NumberValue startPosY, NumberValue endPosX, NumberValue endPosY, Color color)
@@ -52,7 +52,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawLineV(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 startPos, Vector2 endPos, Color color)
@@ -67,7 +67,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawLineEx(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 startPos, Vector2 endPos, NumberValue thick, Color color)
@@ -83,7 +83,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawLineBezier(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 startPos, Vector2 endPos, NumberValue thick, Color color)
@@ -99,7 +99,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawLineBezierQuad(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 startPos, Vector2 endPos, Vector2 controlPos, NumberValue thick, Color color)
@@ -116,7 +116,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawLineBezierCubic(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 startPos, Vector2 endPos, Vector2 startControlPos, Vector2 endControlPos, NumberValue thick, Color color)
@@ -134,7 +134,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         // void DrawLineStrip(Vector2 *points, int pointCount, Color color);
         public static RuntimeResult DrawCircle(Stenguage.Runtime.Environment scope, Position start, Position end, 
@@ -151,7 +151,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawCircleSector(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 center, NumberValue radius, NumberValue startAngle, NumberValue endAngle, NumberValue segments, Color color)
@@ -169,7 +169,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawCircleSectorLines(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 center, NumberValue radius, NumberValue startAngle, NumberValue endAngle, NumberValue segments, Color color)
@@ -187,7 +187,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawCircleGradient(Stenguage.Runtime.Environment scope, Position start, Position end, 
             NumberValue centerX, NumberValue centerY, NumberValue radius, Color color1, Color color2)
@@ -209,7 +209,7 @@ namespace RayLibStenguage
                     (byte)color2.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawCircleV(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 center, NumberValue radius, Color color)
@@ -224,7 +224,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawCircleLines(Stenguage.Runtime.Environment scope, Position start, Position end, 
             NumberValue centerX, NumberValue centerY, NumberValue radius, Color color)
@@ -240,7 +240,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawEllipse(Stenguage.Runtime.Environment scope, Position start, Position end, 
             NumberValue centerX, NumberValue centerY, NumberValue radiusH, NumberValue radiusV, Color color)
@@ -257,7 +257,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawEllipseLines(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue centerX, NumberValue centerY, NumberValue radiusH, NumberValue radiusV, Color color)
@@ -274,7 +274,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRing(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 center, NumberValue innerRadius, NumberValue outerRadius, NumberValue startAngle, NumberValue endAngle, NumberValue segments, Color color)
@@ -293,7 +293,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRingLines(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 center, NumberValue innerRadius, NumberValue outerRadius, NumberValue startAngle, NumberValue endAngle, NumberValue segments, Color color)
@@ -312,7 +312,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRectangle(Stenguage.Runtime.Environment scope, Position start, Position end, 
             NumberValue posX, NumberValue posY, NumberValue width, NumberValue height, Color color)
@@ -329,7 +329,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRectangleV(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 position, Vector2 size, Color color)
@@ -344,7 +344,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRectangleRec(Stenguage.Runtime.Environment scope, Position start, Position end, 
             Rectangle rec, Color color)
@@ -363,7 +363,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRectanglePro(Stenguage.Runtime.Environment scope, Position start, Position end, 
             Rectangle rec, Vector2 origin, NumberValue rotation, Color color)
@@ -385,7 +385,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRectangleGradientV(Stenguage.Runtime.Environment scope, Position start, Position end, 
             NumberValue posX, NumberValue posY, NumberValue width, NumberValue height, Color color1, Color color2)
@@ -408,7 +408,7 @@ namespace RayLibStenguage
                     (byte)color2.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRectangleGradientH(Stenguage.Runtime.Environment scope, Position start, Position end, 
             NumberValue posX, NumberValue posY, NumberValue width, NumberValue height, Color color1, Color color2)
@@ -431,7 +431,7 @@ namespace RayLibStenguage
                     (byte)color2.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRectangleGradientEx(Stenguage.Runtime.Environment scope, Position start, Position end, 
             Rectangle rec, Color col1, Color col2, Color col3, Color col4)
@@ -468,7 +468,7 @@ namespace RayLibStenguage
                     (byte)col4.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRectangleLines(Stenguage.Runtime.Environment scope, Position start, Position end, 
             NumberValue posX, NumberValue posY, NumberValue width, NumberValue height, Color color)
@@ -485,7 +485,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRectangleLinesEx(Stenguage.Runtime.Environment scope, Position start, Position end,
             Rectangle rec, NumberValue lineThick, Color color)
@@ -505,7 +505,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRectangleRounded(Stenguage.Runtime.Environment scope, Position start, Position end,
             Rectangle rec, NumberValue roundness, NumberValue segments, Color color)
@@ -526,7 +526,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawRectangleRoundedLines(Stenguage.Runtime.Environment scope, Position start, Position end,
             Rectangle rec, NumberValue roundness, NumberValue segments, NumberValue lineThick, Color color)
@@ -548,7 +548,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawTriangle(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 v1, Vector2 v2, Vector2 v3, Color color)
@@ -564,7 +564,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawTriangleLines(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 v1, Vector2 v2, Vector2 v3, Color color)
@@ -580,7 +580,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         // void DrawTriangleFan(Vector2 *points, int pointCount, Color color);
         // void DrawTriangleStrip(Vector2 *points, int pointCount, Color color);
@@ -599,7 +599,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawPolyLines(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 center, NumberValue sides, NumberValue radius, NumberValue rotation, Color color)
@@ -616,7 +616,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult DrawPolyLinesEx(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 center, NumberValue sides, NumberValue radius, NumberValue rotation, NumberValue lineThick, Color color)
@@ -634,7 +634,7 @@ namespace RayLibStenguage
                     (byte)color.A.Value
                 )
             );
-            return RuntimeResult.Null(scope.SourceCode, start, end);
+            return RuntimeResult.Null(scope.SourceCode);
         }
         public static RuntimeResult CheckCollisionRecs(Stenguage.Runtime.Environment scope, Position start, Position end,
             Rectangle rec1, Rectangle rec2)
@@ -652,7 +652,7 @@ namespace RayLibStenguage
                     (float)rec2.Width.Value,
                     (float)rec2.Height.Value
                 )
-            ), scope.SourceCode, start, end));
+            ), scope.SourceCode));
         }
         public static RuntimeResult CheckCollisionCircles(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 center1, NumberValue radius1, Vector2 center2, NumberValue radius2)
@@ -664,7 +664,7 @@ namespace RayLibStenguage
                     new System.Numerics.Vector2((float)center2.X.Value, (float)center2.Y.Value),
                     (float)radius2.Value
                 ), 
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         public static RuntimeResult CheckCollisionCircleRec(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 center, NumberValue radius, Rectangle rec)
@@ -680,7 +680,7 @@ namespace RayLibStenguage
                         (float)rec.Height.Value
                     )
                 ), 
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         public static RuntimeResult CheckCollisionPointRec(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 point, Rectangle rec)
@@ -695,7 +695,7 @@ namespace RayLibStenguage
                         (float)rec.Height.Value
                     )
                 ), 
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         public static RuntimeResult CheckCollisionPointCircle(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 point, Vector2 center, NumberValue radius)
@@ -706,7 +706,7 @@ namespace RayLibStenguage
                     new System.Numerics.Vector2((float)center.X.Value, (float)center.Y.Value),
                     (float)radius.Value
                 ), 
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         public static RuntimeResult CheckCollisionPointTriangle(Stenguage.Runtime.Environment scope, Position start, Position end,
             Vector2 point, Vector2 p1, Vector2 p2, Vector2 p3)
@@ -718,7 +718,7 @@ namespace RayLibStenguage
                     new System.Numerics.Vector2((float)p2.X.Value, (float)p2.Y.Value),
                     new System.Numerics.Vector2((float)p3.X.Value, (float)p3.Y.Value)
                 ), 
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         // bool CheckCollisionPointPoly(Vector2 point, Vector2 *points, int pointCount);
         // bool CheckCollisionLines(Vector2 startPos1, Vector2 endPos1, Vector2 startPos2, Vector2 endPos2, Vector2 *collisionPoint);
@@ -732,7 +732,7 @@ namespace RayLibStenguage
                     new System.Numerics.Vector2((float)p2.X.Value, (float)p2.Y.Value),
                     (int)threshold.Value
                 ),
-            scope.SourceCode, start, end));
+            scope.SourceCode));
         }
         public static RuntimeResult GetCollisionRec(Stenguage.Runtime.Environment scope, Position start, Position end,
             Rectangle rec1, Rectangle rec2)
@@ -751,11 +751,11 @@ namespace RayLibStenguage
                     (float)rec2.Height.Value
                 )
             );
-            return new RuntimeResult().Success(new Rectangle(scope.SourceCode, start, end,
-                new NumberValue(rect.x, scope.SourceCode, start, end), 
-                new NumberValue(rect.y, scope.SourceCode, start, end),
-                new NumberValue(rect.width, scope.SourceCode, start, end), 
-                new NumberValue(rect.height, scope.SourceCode, start, end) 
+            return new RuntimeResult().Success(new Rectangle(scope.SourceCode,
+                new NumberValue(rect.x, scope.SourceCode), 
+                new NumberValue(rect.y, scope.SourceCode),
+                new NumberValue(rect.width, scope.SourceCode), 
+                new NumberValue(rect.height, scope.SourceCode) 
             ));
         }
     }

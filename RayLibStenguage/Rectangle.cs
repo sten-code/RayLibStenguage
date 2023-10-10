@@ -10,7 +10,7 @@ namespace RayLibStenguage
         public NumberValue Width { get; set; }
         public NumberValue Height { get; set; }
 
-        public Rectangle(string sourceCode, Position start, Position end, NumberValue x, NumberValue y, NumberValue width, NumberValue height) : base(sourceCode, start, end)
+        public Rectangle(string sourceCode, NumberValue x, NumberValue y, NumberValue width, NumberValue height) : base(sourceCode)
         {
             X = x;
             Y = x;

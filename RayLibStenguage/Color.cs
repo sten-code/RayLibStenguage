@@ -10,12 +10,12 @@ namespace RayLibStenguage
         public NumberValue B { get; set; }
         public NumberValue A { get; set; }
 
-        public Color(string sourceCode, Position start, Position end, NumberValue r, NumberValue g, NumberValue b, NumberValue a = null) : base(sourceCode, start, end)
+        public Color(string sourceCode, NumberValue r, NumberValue g, NumberValue b, NumberValue a = null) : base(sourceCode)
         {
             R = r;
             G = g;
             B = b;
-            A = a == null ? new NumberValue(255, SourceCode, Start, End) : a;
+            A = a == null ? new NumberValue(255, SourceCode) : a;
         }
 
     }
