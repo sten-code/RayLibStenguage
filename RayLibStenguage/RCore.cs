@@ -774,7 +774,7 @@ namespace RayLibStenguage
                 )
             ));
         }
-        // FilePathList LoadDirectoryFiles(string dirPath);
+        // FilePathList LoadDirectoryFiles(string dirPath, int *count);
 
         // FilePathList LoadDirectoryFilesEx(string basePath, string filter, bool scanSubdirs);
 

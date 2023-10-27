@@ -12,7 +12,7 @@ namespace RayLibStenguage
         public Rectangle(NumberValue x, NumberValue y, NumberValue width, NumberValue height)
         {
             X = x;
-            Y = x;
+            Y = y;
             Width = width;
             Height = height;
         }
