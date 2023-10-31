@@ -1,7 +1,7 @@
-﻿using Stenguage.Runtime.Values;
+﻿using Raylib_cs;
+using Stenguage.Runtime.Values;
 using Stenguage.Runtime;
 using Stenguage;
-using RayLibStenguage.Classes;
 
 namespace RayLibStenguage
 {
@@ -10,43 +10,44 @@ namespace RayLibStenguage
         public static RuntimeResult LoadImage(Stenguage.Runtime.Environment scope, Position start, Position end,
             StringValue fileName)
         {
-            return new RuntimeResult().Success(new Image(Imports.LoadImage(fileName.Value)));
+            Raylib_cs.Image image = Raylib.LoadImage(fileName.Value);
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult LoadImageRaw(Stenguage.Runtime.Environment scope, Position start, Position end,
             StringValue fileName, NumberValue width, NumberValue height, NumberValue format, NumberValue headerSize)
         {
-            Structs.Image image = Imports.LoadImageRaw(
+            Raylib_cs.Image image = Raylib.LoadImageRaw(
                 fileName.Value,
                 (int)width.Value,
                 (int)height.Value,
-                (int)format.Value,
+                (PixelFormat)format.Value,
                 (int)headerSize.Value
             );
-            return new RuntimeResult().Success(new Image(image));
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         // Image LoadImageAnim(string fileName, int *frames);
         // Image LoadImageFromMemory(string fileType, constunsignedchar* fileData, int dataSize);
         // Image LoadImageFromTexture(Texture2D texture);
         public static RuntimeResult LoadImageFromScreen(Stenguage.Runtime.Environment scope, Position start, Position end)
         {
-            Structs.Image image = Imports.LoadImageFromScreen();
-            return new RuntimeResult().Success(new Image(image));
+            Raylib_cs.Image image = Raylib.LoadImageFromScreen();
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult IsImageReady(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image)
         {
-            return new RuntimeResult().Success(new BooleanValue(Imports.IsImageReady(image.Source)));
+            return new RuntimeResult().Success(new BooleanValue(Raylib.IsImageReady(image.Source)));
         }
         public static RuntimeResult UnloadImage(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image)
         {
-            Imports.UnloadImage(image.Source);
+            Raylib.UnloadImage(image.Source);
             return RuntimeResult.Null();
         }
         public static RuntimeResult ExportImage(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image, StringValue fileName)
         {
-            return new RuntimeResult().Success(new BooleanValue(Imports.ExportImage(
+            return new RuntimeResult().Success(new BooleanValue(Raylib.ExportImage(
                 image.Source,
                 fileName.Value
             )));
@@ -54,7 +55,7 @@ namespace RayLibStenguage
         public static RuntimeResult ExportImageAsCode(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image, StringValue fileName)
         {
-            return new RuntimeResult().Success(new BooleanValue(Imports.ExportImageAsCode(
+            return new RuntimeResult().Success(new BooleanValue(Raylib.ExportImageAsCode(
                 image.Source,
                 fileName.Value
             )));
@@ -62,140 +63,139 @@ namespace RayLibStenguage
         public static RuntimeResult GenImageColor(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, Color color)
         {
-            Structs.Image image = Imports.GenImageColor(
+            Raylib_cs.Image image = Raylib.GenImageColor(
                 (int)width.Value,
                 (int)height.Value,
-                new Structs.Color(
+                new Raylib_cs.Color(
                     (byte)color.R.Value,
                     (byte)color.G.Value,
                     (byte)color.B.Value,
                     (byte)color.A.Value
                 )
             );
-            return new RuntimeResult().Success(new Image(image));
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult GenImageGradientRadial(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, NumberValue density, Color inner, Color outer)
         {
-            Structs.Image image = Imports.GenImageGradientRadial(
+            Raylib_cs.Image image = Raylib.GenImageGradientRadial(
                 (int)width.Value,
                 (int)height.Value,
                 (float)density.Value,
-                new Structs.Color(
+                new Raylib_cs.Color(
                     (byte)inner.R.Value,
                     (byte)inner.G.Value,
                     (byte)inner.B.Value,
                     (byte)inner.A.Value
                 ),
-                new Structs.Color(
+                new Raylib_cs.Color(
                     (byte)outer.R.Value,
                     (byte)outer.G.Value,
                     (byte)outer.B.Value,
                     (byte)outer.A.Value
                 )
             );
-            return new RuntimeResult().Success(new Image(image));
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult GenImageChecked(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, NumberValue checksX, NumberValue checksY, Color col1, Color col2)
         {
-            Structs.Image image = Imports.GenImageChecked(
+            Raylib_cs.Image image = Raylib.GenImageChecked(
                 (int)width.Value,
                 (int)height.Value,
                 (int)checksX.Value,
                 (int)checksY.Value,
-                new Structs.Color(
+                new Raylib_cs.Color(
                     (byte)col1.R.Value,
                     (byte)col1.G.Value,
                     (byte)col1.B.Value,
                     (byte)col1.A.Value
                 ),
-                new Structs.Color(
+                new Raylib_cs.Color(
                     (byte)col2.R.Value,
                     (byte)col2.G.Value,
                     (byte)col2.B.Value,
                     (byte)col2.A.Value
                 )
             );
-            return new RuntimeResult().Success(new Image(image));
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult GenImageWhiteNoise(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, NumberValue factor)
         {
-            Structs.Image image = Imports.GenImageWhiteNoise(
+            Raylib_cs.Image image = Raylib.GenImageWhiteNoise(
                 (int)width.Value,
                 (int)height.Value,
                 (float)factor.Value
             );
-            return new RuntimeResult().Success(new Image(image));
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult GenImagePerlinNoise(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, NumberValue offsetX, NumberValue offsetY, NumberValue scale)
         {
-            Structs.Image image = Imports.GenImagePerlinNoise(
+            Raylib_cs.Image image = Raylib.GenImagePerlinNoise(
                 (int)width.Value,
                 (int)height.Value,
                 (int)offsetX.Value,
                 (int)offsetY.Value,
                 (float)scale.Value
             );
-            return new RuntimeResult().Success(new Image(image));
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult GenImageCellular(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue width, NumberValue height, NumberValue tileSize)
         {
-            Structs.Image image = Imports.GenImageCellular(
+            Raylib_cs.Image image = Raylib.GenImageCellular(
                 (int)width.Value,
                 (int)height.Value,
                 (int)tileSize.Value
             );
-            return new RuntimeResult().Success(new Image(image));
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public unsafe static RuntimeResult GenImageText(Stenguage.Runtime.Environment scope, Position start, Position end,
-            NumberValue width, NumberValue height, StringValue text)
+            NumberValue width, NumberValue height, NumberValue tileSize)
         {
-            Structs.Image image = Imports.GenImageText(
+            Raylib_cs.Image image = Raylib.GenImageText(
                 (int)width.Value,
                 (int)height.Value,
-                text.Value
+                (int)tileSize.Value
             );
-            return new RuntimeResult().Success(new Image(image));
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         public static RuntimeResult ImageCopy(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image)
         {
-            return new RuntimeResult().Success(new Image(Imports.ImageCopy(image.Source)));
+            Raylib_cs.Image img = Raylib.ImageCopy(image.Source);
+            return new RuntimeResult().Success(new Image { Source = img });
         }
         public static RuntimeResult ImageFromImage(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image, Rectangle rec)
         {
-            return new RuntimeResult().Success(new Image(
-                Imports.ImageFromImage(
-                    image.Source,
-                    new Structs.Rectangle(
-                        (float)rec.X.Value,
-                        (float)rec.Y.Value,
-                        (float)rec.Width.Value,
-                        (float)rec.Height.Value
-                    )
+            Raylib_cs.Image img = Raylib.ImageFromImage(
+                image.Source,
+                new Raylib_cs.Rectangle(
+                    (float)rec.X.Value,
+                    (float)rec.Y.Value,
+                    (float)rec.Width.Value,
+                    (float)rec.Height.Value
                 )
-            ));
+            );
+            return new RuntimeResult().Success(new Image { Source = img });
         }
         public static RuntimeResult ImageText(Stenguage.Runtime.Environment scope, Position start, Position end,
             StringValue text, NumberValue fontSize, Color color)
         {
-            return new RuntimeResult().Success(new Image(
-                Imports.ImageText(
-                    text.Value,
-                    (int)fontSize.Value,
-                    new Structs.Color(
-                        (byte)color.R.Value,
-                        (byte)color.G.Value,
-                        (byte)color.B.Value,
-                        (byte)color.A.Value
-                    )
+            Raylib_cs.Image image = Raylib.ImageText(
+                text.Value,
+                (int)fontSize.Value,
+                new Raylib_cs.Color(
+                    (byte)color.R.Value,
+                    (byte)color.G.Value,
+                    (byte)color.B.Value,
+                    (byte)color.A.Value
                 )
-            ));
+            );
+            return new RuntimeResult().Success(new Image { Source = image });
         }
         // Image ImageTextEx(Font font, string text, float fontSize, float spacing, Color tint);
         // void ImageFormat(Image *image, int newFormat);
@@ -229,7 +229,7 @@ namespace RayLibStenguage
         public static RuntimeResult GetImageAlphaBorder(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image, NumberValue threshold)
         {
-            Structs.Rectangle r = Imports.GetImageAlphaBorder(
+            Raylib_cs.Rectangle r = Raylib.GetImageAlphaBorder(
                 image.Source,
                 (float)threshold.Value
             );
@@ -243,7 +243,7 @@ namespace RayLibStenguage
         public static RuntimeResult GetImageColor(Stenguage.Runtime.Environment scope, Position start, Position end,
             Image image, NumberValue x, NumberValue y)
         {
-            Structs.Color c = Imports.GetImageColor(
+            Raylib_cs.Color c = Raylib.GetImageColor(
                 image.Source,
                 (int)x.Value,
                 (int)y.Value
@@ -293,8 +293,8 @@ namespace RayLibStenguage
         public static RuntimeResult Fade(Stenguage.Runtime.Environment scope, Position start, Position end,
             Color color, NumberValue alpha)
         {
-            Structs.Color c = Imports.Fade(
-                new Structs.Color(
+            Raylib_cs.Color c = Raylib.Fade(
+                new Raylib_cs.Color(
                     (byte)color.R.Value,
                     (byte)color.G.Value,
                     (byte)color.B.Value,
@@ -313,8 +313,8 @@ namespace RayLibStenguage
             Color color)
         {
             return new RuntimeResult().Success(new NumberValue(
-                Imports.ColorToInt(
-                    new Structs.Color(
+                Raylib.ColorToInt(
+                    new Raylib_cs.Color(
                         (byte)color.R.Value,
                         (byte)color.G.Value,
                         (byte)color.B.Value,
@@ -329,7 +329,7 @@ namespace RayLibStenguage
         public static RuntimeResult ColorFromHSV(Stenguage.Runtime.Environment scope, Position start, Position end,
             NumberValue hue, NumberValue saturation, NumberValue value)
         {
-            Structs.Color c = Imports.ColorFromHSV(
+            Raylib_cs.Color c = Raylib.ColorFromHSV(
                 (float)hue.Value,
                 (float)saturation.Value,
                 (float)value.Value
@@ -344,14 +344,14 @@ namespace RayLibStenguage
         public static RuntimeResult ColorTint(Stenguage.Runtime.Environment scope, Position start, Position end,
             Color color, Color tint)
         {
-            Structs.Color c = Imports.ColorTint(
-                new Structs.Color(
+            Raylib_cs.Color c = Raylib.ColorTint(
+                new Raylib_cs.Color(
                     (byte)color.R.Value,
                     (byte)color.G.Value,
                     (byte)color.B.Value,
                     (byte)color.A.Value
                 ),
-                new Structs.Color(
+                new Raylib_cs.Color(
                     (byte)tint.R.Value,
                     (byte)tint.G.Value,
                     (byte)tint.B.Value,
@@ -368,8 +368,8 @@ namespace RayLibStenguage
         public static RuntimeResult ColorBrightness(Stenguage.Runtime.Environment scope, Position start, Position end,
             Color color, NumberValue factor)
         {
-            Structs.Color c = Imports.ColorBrightness(
-                new Structs.Color(
+            Raylib_cs.Color c = Raylib.ColorBrightness(
+                new Raylib_cs.Color(
                     (byte)color.R.Value,
                     (byte)color.G.Value,
                     (byte)color.B.Value,
@@ -387,8 +387,8 @@ namespace RayLibStenguage
         public static RuntimeResult ColorContrast(Stenguage.Runtime.Environment scope, Position start, Position end,
             Color color, NumberValue contrast)
         {
-            Structs.Color c = Imports.ColorContrast(
-                new Structs.Color(
+            Raylib_cs.Color c = Raylib.ColorContrast(
+                new Raylib_cs.Color(
                     (byte)color.R.Value,
                     (byte)color.G.Value,
                     (byte)color.B.Value,
@@ -406,8 +406,8 @@ namespace RayLibStenguage
         public static RuntimeResult ColorAlpha(Stenguage.Runtime.Environment scope, Position start, Position end,
             Color color, NumberValue alpha)
         {
-            Structs.Color c = Imports.ColorAlpha(
-                new Structs.Color(
+            Raylib_cs.Color c = Raylib.ColorAlpha(
+                new Raylib_cs.Color(
                     (byte)color.R.Value,
                     (byte)color.G.Value,
                     (byte)color.B.Value,
@@ -425,20 +425,20 @@ namespace RayLibStenguage
         public static RuntimeResult ColorAlphaBlend(Stenguage.Runtime.Environment scope, Position start, Position end,
             Color dst, Color src, Color tint)
         {
-            Structs.Color c = Imports.ColorAlphaBlend(
-                new Structs.Color(
+            Raylib_cs.Color c = Raylib.ColorAlphaBlend(
+                new Raylib_cs.Color(
                     (byte)dst.R.Value,
                     (byte)dst.G.Value,
                     (byte)dst.B.Value,
                     (byte)dst.A.Value
                 ),
-                new Structs.Color(
+                new Raylib_cs.Color(
                     (byte)src.R.Value,
                     (byte)src.G.Value,
                     (byte)src.B.Value,
                     (byte)src.A.Value
                 ),
-                new Structs.Color(
+                new Raylib_cs.Color(
                     (byte)tint.R.Value,
                     (byte)tint.G.Value,
                     (byte)tint.B.Value,
@@ -459,10 +459,10 @@ namespace RayLibStenguage
             NumberValue width, NumberValue height, NumberValue format)
         {
             return new RuntimeResult().Success(new NumberValue(
-                Imports.GetPixelDataSize(
+                Raylib.GetPixelDataSize(
                     (int)width.Value,
                     (int)height.Value,
-                    (int)format.Value
+                    (PixelFormat)format.Value
                 )
             ));
         }
