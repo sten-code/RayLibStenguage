@@ -700,7 +700,7 @@ namespace RayLibStenguage
 		public static extern bool CheckCollisionPointPoly(Vector2 point, Vector2[] points, int pointCount);
 
 		[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
-		public static extern bool CheckCollisionLines(Vector2 startPos1, Vector2 endPos1, Vector2 startPos2, Vector2 endPos2, Vector2[] collisionPoint);
+		public unsafe static extern bool CheckCollisionLines(Vector2 startPos1, Vector2 endPos1, Vector2 startPos2, Vector2 endPos2, Vector2* collisionPoint);
 
 		[DllImport("raylib.dll", CallingConvention = CallingConvention.Cdecl)]
 		public static extern bool CheckCollisionPointLine(Vector2 point, Vector2 p1, Vector2 p2, int threshold);
@@ -1174,7 +1174,8 @@ namespace RayLibStenguage
 			{
 				Imports.BeginDrawing();
 				Imports.ClearBackground(Structs.Color.BLACK);
-				Imports.DrawTexture(tex, 0, 0, Structs.Color.BLACK);
+				Imports.DrawTexture(tex, 0, 0, Structs.Color.WHITE);
+				DrawRectangle(100, 100, 100, 100, Structs.Color.WHITE);
 				Imports.DrawFPS(10, 10);
 				Imports.EndDrawing();
 			}
