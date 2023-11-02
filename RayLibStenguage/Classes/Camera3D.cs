@@ -1,5 +1,4 @@
-﻿using Raylib_cs;
-using Stenguage.Runtime.Values;
+﻿using Stenguage.Runtime.Values;
 
 namespace RayLibStenguage.Classes
 {

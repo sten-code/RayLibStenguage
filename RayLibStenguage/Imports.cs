@@ -1168,18 +1168,18 @@ namespace RayLibStenguage
 
 		public static void Main(string[] args)
 		{
-			Imports.InitWindow(800, 600, "test");
-			Structs.Texture2D tex = Imports.LoadTexture("C:\\Users\\stent\\Desktop\\Images\\canvas.png");
-			while (!Imports.WindowShouldClose())
+			InitWindow(800, 600, "test");
+			Structs.Shader shader = LoadShader("", "");
+			Structs.Texture2D tex = LoadTexture("C:\\Users\\stent\\Desktop\\Images\\canvas.png");
+			while (!WindowShouldClose())
 			{
-				Imports.BeginDrawing();
-				Imports.ClearBackground(Structs.Color.BLACK);
-				Imports.DrawTexture(tex, 0, 0, Structs.Color.WHITE);
-				DrawRectangle(100, 100, 100, 100, Structs.Color.WHITE);
-				Imports.DrawFPS(10, 10);
-				Imports.EndDrawing();
+				BeginDrawing();
+				ClearBackground(Structs.Color.BLACK);
+
+				DrawFPS(10, 10);
+				EndDrawing();
 			}
-			Imports.CloseWindow();
+			CloseWindow();
 		}
 	}
 }

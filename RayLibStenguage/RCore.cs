@@ -74,24 +74,24 @@ namespace RayLibStenguage
 
         // bool IsWindowState(uint flag);                      // Check if one specific window flag is enabled 
         public static RuntimeResult IsWindowState(Context ctx,
-            uint flag)
+            NumberValue flag)
         {
-            return new RuntimeResult().Success(new BooleanValue(Imports.IsWindowState(flag)));
+            return new RuntimeResult().Success(new BooleanValue(Imports.IsWindowState((uint)flag.Value)));
         }
 
         // void SetWindowState(uint flags);                    // Set window configuration state using flags (only PLATFORM_DESKTOP) 
         public static RuntimeResult SetWindowState(Context ctx,
-            uint flags)
+            NumberValue flags)
         {
-            Imports.SetWindowState(flags);
+            Imports.SetWindowState((uint)flags.Value);
             return RuntimeResult.Null();
         }
 
         // void ClearWindowState(uint flags);                  // Clear window configuration state flags 
         public static RuntimeResult ClearWindowState(Context ctx,
-            uint flags)
+            NumberValue flags)
         {
-            Imports.ClearWindowState(flags);
+            Imports.ClearWindowState((uint)flags.Value);
             return RuntimeResult.Null();
         }
 
@@ -550,7 +550,7 @@ namespace RayLibStenguage
         public static RuntimeResult LoadShader(Context ctx,
             StringValue vsFileName, StringValue fsFileName)
         {
-            return new RuntimeResult().Success(new Shader(Imports.LoadShader(vsFileName.Value, fsFileName.Value)));
+            return new RuntimeResult().Success(new Shader(Imports.LoadShader(vsFileName.Value.Length > 0 ? vsFileName.Value : null, fsFileName.Value.Length > 0 ? fsFileName.Value : null)));
         }
 
         // Shader LoadShaderFromMemory(string vsCode, string fsCode); // Load shader from code strings and bind default locations 
@@ -745,9 +745,9 @@ namespace RayLibStenguage
 
         // void SetRandomSeed(uint seed);                      // Set the seed for the random number generator 
         public static RuntimeResult SetRandomSeed(Context ctx,
-            uint seed)
+            NumberValue seed)
         {
-            Imports.SetRandomSeed(seed);
+            Imports.SetRandomSeed((uint)seed.Value);
             return RuntimeResult.Null();
         }
 
@@ -761,9 +761,9 @@ namespace RayLibStenguage
 
         // void SetConfigFlags(uint flags);                    // Setup init configuration flags (view FLAGS) 
         public static RuntimeResult SetConfigFlags(Context ctx,
-            uint flags)
+            NumberValue flags)
         {
-            Imports.SetConfigFlags(flags);
+            Imports.SetConfigFlags((uint)flags.Value);
             return RuntimeResult.Null();
         }
 
@@ -1356,9 +1356,9 @@ namespace RayLibStenguage
 
         // void SetGesturesEnabled(uint flags);      // Enable a set of gestures using flags 
         public static RuntimeResult SetGesturesEnabled(Context ctx,
-            uint flags)
+            NumberValue flags)
         {
-            Imports.SetGesturesEnabled(flags);
+            Imports.SetGesturesEnabled((uint)flags.Value);
             return RuntimeResult.Null();
         }
 

@@ -10,10 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Raylib-cs" Version="4.5.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Stenguage">
       <HintPath>..\..\Stenguage\Stenguage\bin\Release\Stenguage.dll</HintPath>
     </Reference>

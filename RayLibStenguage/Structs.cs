@@ -1,5 +1,4 @@
-﻿using Raylib_cs;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Runtime.InteropServices;
 
 namespace RayLibStenguage
@@ -869,7 +868,7 @@ namespace RayLibStenguage
             /// <summary>
             /// Did the ray hit something?
             /// </summary>
-            public CBool hit;
+            public bool hit;
 
             /// <summary>
             /// Distance to the nearest hit
